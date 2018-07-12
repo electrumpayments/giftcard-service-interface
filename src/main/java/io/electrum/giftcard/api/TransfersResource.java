@@ -21,7 +21,7 @@ public abstract class TransfersResource {
    protected abstract ITransfersResource getResourceImplementation();
 
    public class Transfer {
-      public static final String OPERATION = "transfer";
+      public static final String TRANSFER = "transfer";
 
       public class PathParameters {
          public static final String TRANSFER_ID = "transferId";
@@ -29,7 +29,7 @@ public abstract class TransfersResource {
    }
 
    public class ConfirmTransfer {
-      public static final String OPERATION = "confirmTransfer";
+      public static final String CONFIRM_TRANSFER = "confirmTransfer";
 
       public class PathParameters {
          public static final String TRANSFER_ID = "transferId";
@@ -38,7 +38,7 @@ public abstract class TransfersResource {
    }
 
    public class ReverseTransfer {
-      public static final String OPERATION = "reverseTransfer";
+      public static final String REVERSE_TRANSFER = "reverseTransfer";
 
       public class PathParameters {
          public static final String TRANSFER_ID = "transferId";

@@ -10,7 +10,7 @@ import javax.ws.rs.core.*;
 
 public interface IReplacesResource {
 
-   void confirmReplace(
+    Response confirmReplace(
          String replaceId,
          String confirmationId,
          ReplaceConfirmation body,
@@ -21,7 +21,7 @@ public interface IReplacesResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void replace(
+    Response replace(
          String replaceId,
          ReplaceRequest body,
          SecurityContext securityContext,
@@ -31,7 +31,7 @@ public interface IReplacesResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void reverseReplace(
+    Response reverseReplace(
          String replaceId,
          String reversalId,
          ReplaceReversal body,

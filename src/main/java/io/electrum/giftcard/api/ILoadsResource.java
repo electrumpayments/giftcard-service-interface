@@ -13,7 +13,7 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 public interface ILoadsResource {
-   void confirmLoad(
+    Response confirmLoad(
          String loadId,
          String confirmationId,
          LoadConfirmation body,
@@ -24,7 +24,7 @@ public interface ILoadsResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void load(
+    Response load(
          String loadId,
          LoadRequest body,
          SecurityContext securityContext,
@@ -34,7 +34,7 @@ public interface ILoadsResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void reverseLoad(
+    Response reverseLoad(
          String loadId,
          String reversalId,
          LoadReversal body,

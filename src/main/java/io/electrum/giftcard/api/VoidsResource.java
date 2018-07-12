@@ -40,7 +40,7 @@ public abstract class VoidsResource {
    protected abstract IVoidsResource getResourceImplementation();
 
    public class VoidGiftcard {
-      public static final String OPERATION = "voidGiftcard";
+      public static final String VOID_GIFTCARD = "voidGiftcard";
 
       public class PathParameters {
          public static final String VOID_ID = "voidId";
@@ -48,7 +48,7 @@ public abstract class VoidsResource {
    }
 
    public class ConfirmVoid {
-      public static final String OPERATION = "confirmVoid";
+      public static final String CONFIRM_VOID = "confirmVoid";
 
       public class PathParameters {
          public static final String VOID_ID = "voidId";
@@ -57,7 +57,7 @@ public abstract class VoidsResource {
    }
 
    public class ReverseVoid {
-      public static final String OPERATION = "reverseVoid";
+      public static final String REVERSE_VOID = "reverseVoid";
 
       public class PathParameters {
          public static final String VOID_ID = "voidId";

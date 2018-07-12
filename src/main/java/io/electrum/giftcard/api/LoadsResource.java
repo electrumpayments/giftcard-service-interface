@@ -38,7 +38,7 @@ public abstract class LoadsResource {
    public static final String PATH = "/loads";
 
    public class Load {
-      public static final String OPERATION = "load";
+      public static final String LOAD = "load";
 
       public class PathParameters {
          public static final String LOAD_ID = "loadId";
@@ -46,7 +46,7 @@ public abstract class LoadsResource {
    }
 
    public class ConfirmLoad {
-      public static final String OPERATION = "confirmLoad";
+      public static final String CONFIRM_LOAD = "confirmLoad";
 
       public class PathParameters {
          public static final String LOAD_ID = "loadId";
@@ -55,7 +55,7 @@ public abstract class LoadsResource {
    }
 
    public class ReverseLoad {
-      public static final String OPERATION = "reverseLoad";
+      public static final String REVERSE_LOAD = "reverseLoad";
 
       public class PathParameters {
          public static final String LOAD_ID = "loadId";

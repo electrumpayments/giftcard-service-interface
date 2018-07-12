@@ -8,7 +8,7 @@ import javax.ws.rs.core.*;
 
 public interface ITransfersResource {
 
-   void confirmTransfer(
+    Response confirmTransfer(
          String transferId,
          String confirmationId,
          TransferConfirmation body,
@@ -19,7 +19,7 @@ public interface ITransfersResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void transfer(
+    Response transfer(
          String transferId,
          TransferRequest body,
          SecurityContext securityContext,
@@ -29,7 +29,7 @@ public interface ITransfersResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   void reverseTransfer(
+    Response reverseTransfer(
          String transferId,
          String reversalId,
          TransferReversal body,

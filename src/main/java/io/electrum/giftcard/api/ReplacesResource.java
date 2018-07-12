@@ -20,7 +20,7 @@ public abstract class ReplacesResource {
    public static final String PATH = "/replaces";
 
    public class Replace {
-      public static final String OPERATION = "replace";
+      public static final String REPLACE = "replace";
 
       public class PathParameters {
          public static final String REPLACE_ID = "replaceId";
@@ -28,7 +28,7 @@ public abstract class ReplacesResource {
    }
 
    public class ConfirmReplace {
-      public static final String OPERATION = "confirmReplace";
+      public static final String CONFIRM_REPLACE = "confirmReplace";
 
       public class PathParameters {
          public static final String REPLACE_ID = "replaceId";
@@ -37,7 +37,7 @@ public abstract class ReplacesResource {
    }
 
    public class ReverseReplace {
-      public static final String OPERATION = "reverseReplace";
+      public static final String REVERSE_REPLACE = "reverseReplace";
 
       public class PathParameters {
          public static final String REPLACE_ID = "redemptionId";

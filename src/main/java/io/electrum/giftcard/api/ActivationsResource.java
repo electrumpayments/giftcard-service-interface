@@ -39,7 +39,7 @@ public abstract class ActivationsResource {
    public static final String PATH = "/activations";
 
    public class Activate {
-      public static final String OPERATION = "activate";
+      public static final String ACTIVATE = "activate";
 
       public class PathParameters {
          public static final String ACTIVATION_ID = "activationId";
@@ -47,7 +47,7 @@ public abstract class ActivationsResource {
    }
 
    public class ConfirmActivation {
-      public static final String OPERATION = "confirmActivation";
+      public static final String CONFIRM_ACTIVATION = "confirmActivation";
 
       public class PathParameters {
          public static final String ACTIVATION_ID = "activationId";
@@ -56,7 +56,7 @@ public abstract class ActivationsResource {
    }
 
    public class ReverseActivation {
-      public static final String OPERATION = "reverseActivation";
+      public static final String REVERSE_ACTIVATION = "reverseActivation";
 
       public class PathParameters {
          public static final String ACTIVATION_ID = "activationId";

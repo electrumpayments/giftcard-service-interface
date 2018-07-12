@@ -36,7 +36,7 @@ public abstract class LookupGiftcardsResource {
    protected abstract ILookupGiftcardsResource getResourceImplementation();
 
    public class LookupGiftcard {
-      public static final String OPERATION = "lookupGiftcard";
+      public static final String LOOKUP_GIFTCARD = "lookupGiftcard";
 
       public class PathParameters {
          public static final String LOOKUP_ID = "lookupId";

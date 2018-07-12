@@ -38,7 +38,7 @@ public abstract class RedemptionsResource {
    public static final String PATH = "/redemptions";
 
    public class Redeem {
-      public static final String OPERATION = "redeem";
+      public static final String REDEEM = "redeem";
 
       public class PathParameters {
          public static final String REDEMPTION_ID = "redemptionId";
@@ -46,7 +46,7 @@ public abstract class RedemptionsResource {
    }
 
    public class ConfirmRedemption {
-      public static final String OPERATION = "confirmRedemption";
+      public static final String CONFIRM_REDEMPTION = "confirmRedemption";
 
       public class PathParameters {
          public static final String REDEMPTION_ID = "redemptionId";
@@ -55,7 +55,7 @@ public abstract class RedemptionsResource {
    }
 
    public class ReverseRedemption {
-      public static final String OPERATION = "reverseRedemption";
+      public static final String REVERSE_REDEMPTION = "reverseRedemption";
 
       public class PathParameters {
          public static final String REDEMPTION_ID = "redemptionId";
