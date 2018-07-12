@@ -24,7 +24,7 @@ public interface IActivationsResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   Response activate(
+    Response activate(
          String activationId,
          ActivationRequest body,
          SecurityContext securityContext,
@@ -34,7 +34,7 @@ public interface IActivationsResource {
          UriInfo uriInfo,
          HttpServletRequest httpServletRequest);
 
-   Response reverseActivation(
+    Response reverseActivation(
          String activationId,
          String reversalId,
          ActivationReversal body,
