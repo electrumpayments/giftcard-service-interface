@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.electrum.vas.Utils;
 import io.electrum.vas.model.Amounts;
+import io.electrum.vas.model.Customer;
 import io.electrum.vas.model.Transaction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,11 +21,25 @@ public class ActivationRequest extends Transaction {
    private Card card = null;
    private PosInfo posInfo = null;
    private Product product = null;
+   private Customer cardHolder = null;
 
    public ActivationRequest amounts(GiftcardAmounts amounts) {
       this.amounts = amounts;
       return this;
    }
+
+    /**
+     * Information about the card holder of the gift card.
+     */
+    @ApiModelProperty(value = "Information about the card holder of the gift card.")
+    @JsonProperty("cardHolder")
+    public Customer getCardHolder() {
+        return cardHolder;
+    }
+
+    public void setCardHolder(Customer cardHolder) {
+        this.cardHolder = cardHolder;
+    }
 
    /**
     * Specifies an amount which should be loaded onto the card as part of the activation.
@@ -119,6 +134,7 @@ public class ActivationRequest extends Transaction {
       sb.append("    card: ").append(Utils.toIndentedString(card)).append("\n");
       sb.append("    posInfo: ").append(Utils.toIndentedString(posInfo)).append("\n");
       sb.append("    product: ").append(Utils.toIndentedString(product)).append("\n");
+       sb.append("    cardHolder: ").append(Utils.toIndentedString(cardHolder)).append("\n");
       sb.append("}");
       return sb.toString();
    }
