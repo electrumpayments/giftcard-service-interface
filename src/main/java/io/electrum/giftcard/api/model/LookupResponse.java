@@ -41,9 +41,14 @@ public class LookupResponse extends Transaction {
       this.cardHolder = cardHolder;
    }
 
+   public LookupResponse cardHolder(Customer cardHolder) {
+      this.cardHolder = cardHolder;
+      return this;
+   }
+
    /**
     * Indicates the balance of the gift card at the time of the request.
-    * 
+    *
     * @return amounts
     **/
    @ApiModelProperty(required = true, value = "Indicates the balance of the gift card at the time of the request.")
@@ -59,7 +64,7 @@ public class LookupResponse extends Transaction {
 
    /**
     * Information about the gift card for which information is being requested.
-    * 
+    *
     * @return card
     **/
    @ApiModelProperty(required = true, value = "Information about the gift card for which information is being requested.")
@@ -73,6 +78,11 @@ public class LookupResponse extends Transaction {
       this.card = card;
    }
 
+   public LookupResponse card(Card card) {
+      this.card = card;
+      return this;
+   }
+
    public LookupResponse posInfo(PosInfo posInfo) {
       this.posInfo = posInfo;
       return this;
@@ -80,7 +90,7 @@ public class LookupResponse extends Transaction {
 
    /**
     * Information about how card details were captured at the POS.
-    * 
+    *
     * @return posInfo
     **/
    @ApiModelProperty(required = true, value = "Information about how card details were captured at the POS.")
@@ -101,7 +111,7 @@ public class LookupResponse extends Transaction {
 
    /**
     * Information about the product associated with the gift card if the gift card has been activated.
-    * 
+    *
     * @return product
     **/
    @ApiModelProperty(value = "Information about the product associated with the gift card if the gift card has been activated.")

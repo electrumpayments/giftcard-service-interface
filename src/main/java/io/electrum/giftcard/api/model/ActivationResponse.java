@@ -40,6 +40,11 @@ public class ActivationResponse extends Transaction {
       this.cardHolder = cardHolder;
    }
 
+   public ActivationResponse cardHolder(Customer cardHolder) {
+      this.cardHolder = cardHolder;
+      return this;
+   }
+
    /**
     * Indicates the amount which was requested to be loaded onto the card during activation, the amount which was loaded
     * and the balance of the gift card after activation.
