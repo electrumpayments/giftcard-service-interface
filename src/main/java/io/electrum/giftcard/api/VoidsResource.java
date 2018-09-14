@@ -24,21 +24,22 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/voids")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the voids API")
 public abstract class VoidsResource {
    protected abstract IVoidsResource getResourceImplementation();
 
    @POST
    @Path("/{voidId}/confirmations/{confirmationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a void of a gift card.", notes = "The Void Confirmations endpoint "
          + "registers the confirmation of a prior void on a gift card. Void confirmations are "
          + "advice type messages and should continue to be sent at suitable intervals until a response "
@@ -75,8 +76,8 @@ public abstract class VoidsResource {
 
    @POST
    @Path("/{voidId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a gift card be voided.", notes = "The Voids endpoint "
          + "allows an activated giftcard to be voided. A void is not considered "
          + "complete until a void confirmation or void reversal has been sent and "
@@ -112,8 +113,8 @@ public abstract class VoidsResource {
 
    @POST
    @Path("/{voidId}/reversals/{reversalId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a void reversal undoes a void if the void "
          + "was successfully processed.", notes = "The Void Reversals endpoint "
                + "allows voids of a gift card to be reversed. If the sender of a "

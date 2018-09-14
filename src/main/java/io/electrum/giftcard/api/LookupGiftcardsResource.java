@@ -21,13 +21,14 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/lookupGiftcard")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the giftcard API")
 public abstract class LookupGiftcardsResource {
 
@@ -35,7 +36,7 @@ public abstract class LookupGiftcardsResource {
 
    @POST
    @Path("/{lookupId}")
-   @Produces({ "application/json" })
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request gift card information.", notes = "The Lookup Gift Cards endpoint "
          + "allows information about a gift card to be retrieved. This operation has no financial impact and may "
          + "be submitted repeatedly without financial consequece. Thus there is no confirmation or reversal "

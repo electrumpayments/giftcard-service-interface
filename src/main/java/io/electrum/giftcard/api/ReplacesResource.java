@@ -11,16 +11,16 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.*;
 
 @Path("/replaces")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the replaces API")
 public abstract class ReplacesResource {
    protected abstract IReplacesResource getResourceImplementation();
 
    @POST
    @Path("/{replaceId}/confirmations/{confirmationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a replace request of an old card with a new card.", notes = "The Replace Confirmations endpoint "
          + "registers the confirmation of a prior replace request for an old gift card to be replaced by a new gift card. "
          + "Replace confirmations are advice type messages and should continue to be sent at suitable intervals until a response has "
@@ -57,8 +57,8 @@ public abstract class ReplacesResource {
 
    @POST
    @Path("/{replaceId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a replace of an old gift card with a new gift card.", notes = "The Replace endpoint "
          + "allows old gift cards to be replaced with new gift cards (transfers all funds and voids old card). "
          + "A replace is not considered complete until a replace confirmation or replace reversal has been sent and "
@@ -94,8 +94,8 @@ public abstract class ReplacesResource {
 
    @POST
    @Path("/{replaceId}/reversals/{reversalId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a replace reversal undoes a replace request if the replace "
          + "was successfully processed.", notes = "The Replace Reversals endpoint allows "
                + "replace requests of old gift cards with a new gift cards to be reversed. If the sender of a replace request "

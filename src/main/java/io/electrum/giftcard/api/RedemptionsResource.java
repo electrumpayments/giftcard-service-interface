@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.ResponseHeader;
 
+import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -24,21 +25,22 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/redemptions")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the redemptions API")
 public abstract class RedemptionsResource {
    protected abstract IRedemptionsResource getResourceImplementation();
 
    @POST
    @Path("/{redemptionId}/confirmations/{confirmationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a redemption against a gift card.", notes = "The Redemption Confirmations endpoint "
          + "registers the confirmation of a prior redemption of a gift card. Redemption confirmations are advice type "
          + "messages and should continue to be sent at suitable intervals until a response has been received. Multiple "
@@ -75,8 +77,8 @@ public abstract class RedemptionsResource {
 
    @POST
    @Path("/{redemptionId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a redemption of a gift card.", notes = "The Redemptions endpoint "
          + "allows gift cards to be redeemed as a form of tender. A redemption is not considered "
          + "complete until a redemption confirmation or redemption reversal has been sent and "
@@ -112,8 +114,8 @@ public abstract class RedemptionsResource {
 
    @POST
    @Path("/{redemptionId}/reversals/{reversalId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a redemption reversal undoes a redemption if the redemption "
          + "was successfully processed.", notes = "The Redemption Reversals endpoint allows "
                + "redemptions on a gift card to be reversed. If the sender of a redemption request "

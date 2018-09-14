@@ -24,21 +24,22 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 @Path("/loads")
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the loads API")
 public abstract class LoadsResource {
    protected abstract ILoadsResource getResourceImplementation();
 
    @POST
    @Path("/{loadId}/confirmations/{confirmationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a load of funds on a gift card.", notes = "The Load Confirmations endpoint "
          + "registers the confirmation of a prior load on a gift card. Load confirmations are advice type "
          + "messages and should continue to be sent at suitable intervals until a response has been received. "
@@ -75,8 +76,8 @@ public abstract class LoadsResource {
 
    @POST
    @Path("/{loadId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request funds to be loaded on a gift card.", notes = "The Loads endpoint "
          + "allows loading of funds on a gift card to be authorized. A load is not considered "
          + "complete until a load confirmation or load reversal has been sent and acknowledged. A "
@@ -111,8 +112,8 @@ public abstract class LoadsResource {
 
    @POST
    @Path("/{loadId}/reversals/{reversalId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a load reversal undoes a load if the load "
          + "was successfully processed.", notes = "The Load Reversals endpoint allows "
                + "loads on a gift card to be reversed. If the sender of a load request "
