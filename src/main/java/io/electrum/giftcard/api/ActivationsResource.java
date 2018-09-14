@@ -28,7 +28,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("/activations")
+import static io.electrum.giftcard.api.GiftcardApi.Paths.ActivationPaths.ACTIVATION_BASE_PATH;
+
+@Path(ACTIVATION_BASE_PATH)
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 @Api(description = "the activations API")

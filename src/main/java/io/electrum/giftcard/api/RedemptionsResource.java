@@ -30,7 +30,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("/redemptions")
+import static io.electrum.giftcard.api.GiftcardApi.Paths.RedemptionPaths.REDEMPTIONS_BASE_PATH;
+
+@Path(REDEMPTIONS_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the redemptions API")

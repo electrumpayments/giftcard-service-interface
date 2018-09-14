@@ -10,7 +10,9 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.*;
 
-@Path("/replaces")
+import static io.electrum.giftcard.api.GiftcardApi.Paths.ReplacePaths.REPLACE_BASE_PATH;
+
+@Path(REPLACE_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the replaces API")

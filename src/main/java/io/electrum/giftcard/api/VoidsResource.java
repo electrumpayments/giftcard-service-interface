@@ -29,7 +29,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("/voids")
+import static io.electrum.giftcard.api.GiftcardApi.Paths.VoidPaths.VOID_BASE_PATH;
+
+@Path(VOID_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the voids API")

@@ -26,7 +26,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("/lookupGiftcard")
+import static io.electrum.giftcard.api.GiftcardApi.Paths.LookupPaths.LOOKUP_BASE_PATH;
+
+@Path(LOOKUP_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the giftcard API")
