@@ -47,7 +47,7 @@ public abstract class LoadsResource {
          + "messages and should continue to be sent at suitable intervals until a response has been received. "
          + "Multiple confirmation advices may be sent which refer to the same load. The net result is that "
          + "the load is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Loads", })
+               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
@@ -84,7 +84,7 @@ public abstract class LoadsResource {
          + "allows loading of funds on a gift card to be authorized. A load is not considered "
          + "complete until a load confirmation or load reversal has been sent and acknowledged. A "
          + "load request should only be sent once otherwise multiple loads may occur erroneously.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Loads", })
+               @Authorization(value = "httpBasic") }, tags = { "Loads", }, nickname = Operations.LOAD)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = LoadResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -125,7 +125,7 @@ public abstract class LoadsResource {
                + "reversals may be sent which refer to the same load. The net result "
                + "is that the load is reversed once. Note that a load reversal does not "
                + "equate to a redemption.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Loads", "Reversals", })
+                     @Authorization(value = "httpBasic") }, tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),

@@ -48,7 +48,7 @@ public abstract class RedemptionsResource {
          + "messages and should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same redemption. The net result is that the "
          + "redemption is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Redemptions", })
+               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Redemptions", }, nickname = Operations.CONFIRM_REDEMPTION)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
@@ -86,7 +86,7 @@ public abstract class RedemptionsResource {
          + "complete until a redemption confirmation or redemption reversal has been sent and "
          + "acknowledged. A redemption request should only be sent once otherwise multiple "
          + "redemptions may occur erroneously.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Redemptions", })
+               @Authorization(value = "httpBasic") }, tags = { "Redemptions", }, nickname = Operations.REDEMPTION)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = RedemptionResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -126,7 +126,7 @@ public abstract class RedemptionsResource {
                + "until a response has been received. Multiple reversals may be sent which refer to "
                + "the same redemption. The net result is that the redemption is reversed once. Note "
                + "that a reversal does not equate to a load.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Redemptions", "Reversals", })
+                     @Authorization(value = "httpBasic") }, tags = { "Redemptions", "Reversals", }, nickname = Operations.REVERSE_REDEMPTION)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),

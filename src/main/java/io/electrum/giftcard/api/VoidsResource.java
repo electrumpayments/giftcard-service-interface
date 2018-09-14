@@ -47,7 +47,7 @@ public abstract class VoidsResource {
          + "advice type messages and should continue to be sent at suitable intervals until a response "
          + "has been received. Multiple confirmation advices may be sent which refer to the same "
          + "void. The net result is that the void is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Voids", })
+               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Voids", }, nickname = Operations.CONFIRM_VOID)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
@@ -85,7 +85,7 @@ public abstract class VoidsResource {
          + "complete until a void confirmation or void reversal has been sent and "
          + "acknowledged. While a gift card can only be voided once, a void request "
          + "should only be sent once and then either confirmed or reversed.", response = VoidResponse.class, authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Voids", })
+               @Authorization(value = "httpBasic") }, tags = { "Voids", },nickname = Operations.VOID)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = VoidResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -125,7 +125,7 @@ public abstract class VoidsResource {
                + "sent at suitable intervals until a response has been received. "
                + "Multiple reversals may be sent which refer to the same void. The "
                + "net result is that the void is reversed once.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Voids", "Reversals", })
+                     @Authorization(value = "httpBasic") }, tags = { "Voids", "Reversals", }, nickname = Operations.REVERSE_VOID)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),

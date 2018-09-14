@@ -43,7 +43,7 @@ public abstract class LookupGiftcardsResource {
          + "allows information about a gift card to be retrieved. This operation has no financial impact and may "
          + "be submitted repeatedly without financial consequece. Thus there is no confirmation or reversal "
          + "process for gift card lookup requests.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Giftcard Information", })
+               @Authorization(value = "httpBasic") }, tags = { "Giftcard Information", }, nickname = Operations.LOOKUP_GIFTCARD)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = LookupResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the gift card lookup resource", response = String.class) }),

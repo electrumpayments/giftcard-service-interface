@@ -33,4 +33,8 @@ public class GiftcardApi {
         public static final String VOID_BASE_PATH = "/voids";
       }
    }
+
+   public class HttpAuthorizations {
+       public static final String HTTP_BASIC = "httpBasic";
+   }
 }

@@ -24,15 +24,17 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
+import static io.electrum.giftcard.api.GiftcardApi.HttpAuthorizations.HTTP_BASIC;
 import static io.electrum.giftcard.api.GiftcardApi.Paths.ActivationPaths.ACTIVATION_BASE_PATH;
 
 @Path(ACTIVATION_BASE_PATH)
-@Consumes({ "application/json" })
-@Produces({ "application/json" })
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the activations API")
 public abstract class ActivationsResource {
 
@@ -40,14 +42,14 @@ public abstract class ActivationsResource {
 
    @POST
    @Path("/{activationId}/confirmations/{confirmationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a gift card activation.", notes = "The Activation Confirmations endpoint "
          + "registers the confirmation of a prior activation of a giftcard. Activation confirmations are "
          + "advice type messages and should continue to be sent at suitable intervals until a response has "
          + "been received. Multiple confirmation advices may be sent which refer to the same activation. "
          + "The net result is that the activation is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Activations", "Confirmations", })
+               @Authorization(value = HTTP_BASIC) }, tags = { "Activations", "Confirmations", }, nickname = Operations.CONFIRM_ACTIVATION)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
@@ -78,14 +80,14 @@ public abstract class ActivationsResource {
 
    @POST
    @Path("/{activationId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a gift card activation.", notes = "The Activations endpoint allows a "
          + "gift card to be activated. Optionally, an amount can be included to indicate initial funds "
          + "which should be credited to the card. An activation is not considered complete until an "
          + "activation confirmation or activation reversal has been sent and acknowledged. An "
          + "activation request should only be sent once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Activations", })
+               @Authorization(value = HTTP_BASIC) }, tags = { "Activations", }, nickname = Operations.ACTIVATE)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = ActivationResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created activation resource", response = String.class) }),
@@ -115,8 +117,8 @@ public abstract class ActivationsResource {
 
    @POST
    @Path("/{activationId}/reversals/{reversalId}")
-   @Consumes({ "application/json" })
-   @Produces({ "application/json" })
+   @Consumes({MediaType.APPLICATION_JSON})
+   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, an activation reversal undoes an activation if the activation "
          + "was successfully processed.", notes = "The Activation Reversals endpoint allows an "
                + "activation of a giftcard to be reversed. If the sender of an activation request is "
@@ -125,7 +127,7 @@ public abstract class ActivationsResource {
                + "be sent at suitable intervals until a response has been received. Multiple reversals "
                + "advices may be sent which refer to the same activation. The net result is that the "
                + "activation is reversed once.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Activations", "Reversals", })
+                     @Authorization(value = HTTP_BASIC) }, tags = { "Activations", "Reversals", }, nickname = Operations.REVERSE_ACIVATION)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),

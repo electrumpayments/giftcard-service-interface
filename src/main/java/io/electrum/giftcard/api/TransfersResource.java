@@ -29,7 +29,7 @@ public abstract class TransfersResource {
          + "should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same transfer. The net result is that the "
          + "transfer is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Transfers", })
+               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Transfers", }, nickname = Operations.CONFIRM_TRANSFER)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
@@ -67,7 +67,7 @@ public abstract class TransfersResource {
          + "complete until a transfer confirmation or transfer reversal has been sent and "
          + "acknowledged. A transfer request should only be sent once otherwise multiple "
          + "transfers may occur erroneously.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Transfers", })
+               @Authorization(value = "httpBasic") }, tags = { "Transfers", }, nickname = Operations.TRANSFER)
    @ApiResponses(value = {
          @ApiResponse(code = 201, message = "Created", response = TransferResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -106,7 +106,7 @@ public abstract class TransfersResource {
                + "transfer reversal. Reversals should continue to be sent at suitable intervals "
                + "until a response has been received. Multiple reversals may be sent which refer to "
                + "the same transfer. The net result is that the transfer is reversed once.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Transfers", "Reversals", })
+                     @Authorization(value = "httpBasic") }, tags = { "Transfers", "Reversals", }, nickname = Operations.REVERSE_TRANSFER)
    @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
          @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
          @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
