@@ -36,8 +36,8 @@ public abstract class ReplacesResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmReplace(
-         @ApiParam(value = "The randomly generated replaceId UUID as sent in the original replace request.", required = true) @PathParam("replaceId") String replaceId,
-         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
+         @ApiParam(value = "The randomly generated replaceId UUID as sent in the original replace request.", required = true) @PathParam(GiftcardApi.PathParams.REPLACE_ID) String replaceId,
+         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.CONFIRMATION_ID) String confirmationId,
          @ApiParam(value = "The replace confirmation information.", required = true) ReplaceConfirmation replaceConfirmation,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -75,7 +75,7 @@ public abstract class ReplacesResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void replace(
-         @ApiParam(value = "The randomly generated UUID identifying this replace, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("replaceId") String replaceId,
+         @ApiParam(value = "The randomly generated UUID identifying this replace, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REPLACE_ID) String replaceId,
          @ApiParam(value = "The replace information.", required = true) ReplaceRequest replaceRequest,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -113,8 +113,8 @@ public abstract class ReplacesResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseReplace(
-         @ApiParam(value = "The randomly generated replaceId UUID as sent in the original replace.", required = true) @PathParam("replaceId") String replaceId,
-         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,
+         @ApiParam(value = "The randomly generated replaceId UUID as sent in the original replace.", required = true) @PathParam(GiftcardApi.PathParams.REPLACE_ID) String replaceId,
+         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REVERSAL_ID) String reversalId,
          @ApiParam(value = "The replace reversal information.", required = true) ReplaceReversal replaceReversal,
          @Context SecurityContext securityContext,
          @Context Request request,

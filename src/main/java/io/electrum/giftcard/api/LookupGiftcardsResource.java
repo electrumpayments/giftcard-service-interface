@@ -53,7 +53,7 @@ public abstract class LookupGiftcardsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void lookupGiftcard(
-         @ApiParam(value = "The randomly generated UUID identifying this lookup request, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("lookupId") String lookupId,
+         @ApiParam(value = "The randomly generated UUID identifying this lookup request, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.LOOKUP_ID) String lookupId,
          @ApiParam(value = "Information describing the gift card lookup to be performed.", required = true) LookupRequest lookupRequest,
          @Context SecurityContext securityContext,
          @Context Request request,

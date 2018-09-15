@@ -56,8 +56,8 @@ public abstract class RedemptionsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmRedemption(
-         @ApiParam(value = "The randomly generated redemptionId UUID as sent in the original redemption.", required = true) @PathParam("redemptionId") String redemptionId,
-         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
+         @ApiParam(value = "The randomly generated redemptionId UUID as sent in the original redemption.", required = true) @PathParam(GiftcardApi.PathParams.REDEMPTION_ID) String redemptionId,
+         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.CONFIRMATION_ID) String confirmationId,
          @ApiParam(value = "The redemption confirmation information.", required = true) RedemptionConfirmation redemptionConfirmation,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -95,7 +95,7 @@ public abstract class RedemptionsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void redeem(
-         @ApiParam(value = "The randomly generated UUID identifying this redemption, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("redemptionId") String redemptionId,
+         @ApiParam(value = "The randomly generated UUID identifying this redemption, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REDEMPTION_ID) String redemptionId,
          @ApiParam(value = "The redemption information.", required = true) RedemptionRequest redemptionRequest,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -134,8 +134,8 @@ public abstract class RedemptionsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseRedemption(
-         @ApiParam(value = "The randomly generated redemptionId UUID as sent in the original redemption.", required = true) @PathParam("redemptionId") String redemptionId,
-         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,
+         @ApiParam(value = "The randomly generated redemptionId UUID as sent in the original redemption.", required = true) @PathParam(GiftcardApi.PathParams.REDEMPTION_ID) String redemptionId,
+         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REVERSAL_ID) String reversalId,
          @ApiParam(value = "The redemption reversal information.", required = true) RedemptionReversal redemtpionReversal,
          @Context SecurityContext securityContext,
          @Context Request request,

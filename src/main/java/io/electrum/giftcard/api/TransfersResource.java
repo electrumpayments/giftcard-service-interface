@@ -37,8 +37,8 @@ public abstract class TransfersResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmTransfer(
-         @ApiParam(value = "The randomly generated transferId UUID as sent in the original transfer request.", required = true) @PathParam("transferId") String transferId,
-         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
+         @ApiParam(value = "The randomly generated transferId UUID as sent in the original transfer request.", required = true) @PathParam(GiftcardApi.PathParams.TRANSFER_ID) String transferId,
+         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.CONFIRMATION_ID) String confirmationId,
          @ApiParam(value = "The transfer confirmation information.", required = true) TransferConfirmation transferConfirmation,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -76,7 +76,7 @@ public abstract class TransfersResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void transfer(
-         @ApiParam(value = "The randomly generated UUID identifying this transfer, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("transferId") String transferId,
+         @ApiParam(value = "The randomly generated UUID identifying this transfer, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.TRANSFER_ID) String transferId,
          @ApiParam(value = "The transfer information.", required = true) TransferRequest transferRequest,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -114,8 +114,8 @@ public abstract class TransfersResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseTransfer(
-         @ApiParam(value = "The randomly generated transferId UUID as sent in the original transfer.", required = true) @PathParam("transferId") String transferId,
-         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,
+         @ApiParam(value = "The randomly generated transferId UUID as sent in the original transfer.", required = true) @PathParam(GiftcardApi.PathParams.TRANSFER_ID) String transferId,
+         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REVERSAL_ID) String reversalId,
          @ApiParam(value = "The transfer reversal information.", required = true) TransferReversal transferReversal,
          @Context SecurityContext securityContext,
          @Context Request request,

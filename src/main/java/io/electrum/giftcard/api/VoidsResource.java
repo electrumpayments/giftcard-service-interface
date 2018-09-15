@@ -55,8 +55,8 @@ public abstract class VoidsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmVoid(
-         @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam("voidId") String voidId,
-         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
+         @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam(GiftcardApi.PathParams.VOID_ID) String voidId,
+         @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.CONFIRMATION_ID) String confirmationId,
          @ApiParam(value = "The void confirmation information.", required = true) VoidConfirmation voidConfirmation,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -94,7 +94,7 @@ public abstract class VoidsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void voidGiftcard(
-         @ApiParam(value = "The randomly generated UUID identifying this void, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("voidId") String voidId,
+         @ApiParam(value = "The randomly generated UUID identifying this void, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.VOID_ID) String voidId,
          @ApiParam(value = "The void information.", required = true) VoidRequest voidRequest,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -133,8 +133,8 @@ public abstract class VoidsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseVoid(
-         @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam("voidId") String voidId,
-         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,
+         @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam(GiftcardApi.PathParams.VOID_ID) String voidId,
+         @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.REVERSAL_ID) String reversalId,
          @ApiParam(value = "The void reversal information.", required = true) VoidReversal voidReversal,
          @Context SecurityContext securityContext,
          @Context Request request,
