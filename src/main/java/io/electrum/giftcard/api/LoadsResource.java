@@ -47,13 +47,13 @@ public abstract class LoadsResource {
          + "messages and should continue to be sent at suitable intervals until a response has been received. "
          + "Multiple confirmation advices may be sent which refer to the same load. The net result is that "
          + "the load is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
-   @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmLoad(
          @ApiParam(value = "The randomly generated loadId UUID as sent in the original load.", required = true) @PathParam("loadId") String loadId,
          @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
@@ -84,14 +84,14 @@ public abstract class LoadsResource {
          + "allows loading of funds on a gift card to be authorized. A load is not considered "
          + "complete until a load confirmation or load reversal has been sent and acknowledged. A "
          + "load request should only be sent once otherwise multiple loads may occur erroneously.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Loads", }, nickname = Operations.LOAD)
+               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Loads", }, nickname = Operations.LOAD)
    @ApiResponses(value = {
-         @ApiResponse(code = 201, message = "Created", response = LoadResponse.class, responseHeaders = {
+         @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = LoadResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void load(
          @ApiParam(value = "The randomly generated UUID identifying this load, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("loadId") String loadId,
          @ApiParam(value = "The load information.", required = true) LoadRequest loadRequest,
@@ -125,13 +125,13 @@ public abstract class LoadsResource {
                + "reversals may be sent which refer to the same load. The net result "
                + "is that the load is reversed once. Note that a load reversal does not "
                + "equate to a redemption.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
-   @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseLoad(
          @ApiParam(value = "The randomly generated loadId UUID as sent in the original load.", required = true) @PathParam("loadId") String loadId,
          @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,

@@ -47,13 +47,13 @@ public abstract class VoidsResource {
          + "advice type messages and should continue to be sent at suitable intervals until a response "
          + "has been received. Multiple confirmation advices may be sent which refer to the same "
          + "void. The net result is that the void is confirmed once.", authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Confirmations", "Voids", }, nickname = Operations.CONFIRM_VOID)
-   @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Voids", }, nickname = Operations.CONFIRM_VOID)
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void confirmVoid(
          @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam("voidId") String voidId,
          @ApiParam(value = "The randomly generated UUID identifying this confirmation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("confirmationId") String confirmationId,
@@ -85,14 +85,14 @@ public abstract class VoidsResource {
          + "complete until a void confirmation or void reversal has been sent and "
          + "acknowledged. While a gift card can only be voided once, a void request "
          + "should only be sent once and then either confirmed or reversed.", response = VoidResponse.class, authorizations = {
-               @Authorization(value = "httpBasic") }, tags = { "Voids", },nickname = Operations.VOID)
+               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Voids", },nickname = Operations.VOID)
    @ApiResponses(value = {
-         @ApiResponse(code = 201, message = "Created", response = VoidResponse.class, responseHeaders = {
+         @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = VoidResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void voidGiftcard(
          @ApiParam(value = "The randomly generated UUID identifying this void, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("voidId") String voidId,
          @ApiParam(value = "The void information.", required = true) VoidRequest voidRequest,
@@ -125,13 +125,13 @@ public abstract class VoidsResource {
                + "sent at suitable intervals until a response has been received. "
                + "Multiple reversals may be sent which refer to the same void. The "
                + "net result is that the void is reversed once.", authorizations = {
-                     @Authorization(value = "httpBasic") }, tags = { "Voids", "Reversals", }, nickname = Operations.REVERSE_VOID)
-   @ApiResponses(value = { @ApiResponse(code = 202, message = "Accepted", response = BasicAdviceResponse.class),
-         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = 404, message = "Not Found", response = ErrorDetail.class),
-         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = 503, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = 504, message = "Gateway Timeout", response = ErrorDetail.class) })
+                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Voids", "Reversals", }, nickname = Operations.REVERSE_VOID)
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseVoid(
          @ApiParam(value = "The randomly generated voidId UUID as sent in the original void.", required = true) @PathParam("voidId") String voidId,
          @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,
