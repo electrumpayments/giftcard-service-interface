@@ -94,7 +94,7 @@ public abstract class ActivationsResource {
          @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void activate(
-         @ApiParam(value = "The randomly generated UUID identifying this activation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("activationId") String activationId,
+         @ApiParam(value = "The randomly generated UUID identifying this activation, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam(GiftcardApi.PathParams.ACTIVATION_ID) String activationId,
          @ApiParam(value = "The activation information.", required = true) ActivationRequest activationRequest,
          @Context SecurityContext securityContext,
          @Context Request request,
@@ -126,12 +126,12 @@ public abstract class ActivationsResource {
                + "advices may be sent which refer to the same activation. The net result is that the "
                + "activation is reversed once.", authorizations = {
                      @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Activations", "Reversals", }, nickname = Operations.REVERSE_ACIVATION)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = "Accepted", response = BasicAdviceResponse.class),
-         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = "Bad Request", response = ErrorDetail.class),
-         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = "Not Found", response = ErrorDetail.class),
-         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = "Internal Server Error", response = ErrorDetail.class),
-         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = "Service Unavailable", response = ErrorDetail.class),
-         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = "Gateway Timeout", response = ErrorDetail.class) })
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.SERVICE_UNAVAILABLE, message = GiftcardApi.ResponseMessages.SERVICE_UNAVAILABLE, response = ErrorDetail.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.GATEWAY_TIMEOUT, message = GiftcardApi.ResponseMessages.GATEWAY_TIMEOUT, response = ErrorDetail.class) })
    public final void reverseActivation(
          @ApiParam(value = "The randomly generated activationId UUID as sent in the original activation.", required = true) @PathParam("activationId") String activationId,
          @ApiParam(value = "The randomly generated UUID identifying this reversal, as defined for a variant 4 UUID in [RFC 4122](https://tools.ietf.org/html/rfc4122).", required = true) @PathParam("reversalId") String reversalId,

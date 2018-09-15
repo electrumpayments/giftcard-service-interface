@@ -1,36 +1,74 @@
 package io.electrum.giftcard.api;
 
 public class GiftcardApi {
+    public class PathParams {
+        //The general path parameters
+        public static final String REVERSAL_ID = "reversalId";
+        public static final String CONFIRMATION_ID = "confirmationId";
+
+        //Operation specific path parameters
+        public static final String ACTIVATION_ID  = "activationId";
+        public static final String LOAD_ID = "loadId";
+        public static final String LOOKUP_ID = "lookupId";
+        public static final String REDEMPTION_ID = "redemptionId";
+        public static final String REPLACE_ID  = "replaceId";
+        public static final String TRANSFER_ID = "transferId";
+        public static final String VOID_ID = "voidId";
+
+    }
+
    public class Paths {
       public static final String VERSION_NO = "/3";
       public static final String BASE_PATH = "/giftcard" + VERSION_NO;
+      public static final String REVERSALS = "/reversals";
+      public static final String CONFIRMATIONS = "/confirmations";
+
 
       public class ActivationPaths {
          public static final String ACTIVATION_BASE_PATH = "/activations";
+         public static final String ACTIVATION_REQUEST = " ";
+         public static final String ACTIVATION_CONFIRMATION = " ";
+         public static final String ACTIVATION_REVERSAL = " ";
       }
 
       public class LoadPaths {
          public static final String LOAD_BASE_PATH = "/loads";
+         public static final String LOAD_REQUEST = " ";
+         public static final String LOAD_CONFIRMATION = " ";
+         public static final String LOAD_REVERSAL = " ";
       }
 
       public class LookupPaths {
         public static final String LOOKUP_BASE_PATH = "/lookupGiftcard";
+        public static final String LOOKUP_REQUEST = " ";
       }
 
       public class RedemptionPaths {
-        public static final String REDEMPTIONS_BASE_PATH = "/redemptions";
+        public static final String REDEMPTION_BASE_PATH = "/redemptions";
+        public static final String REDEMPTION_REQUEST = " ";
+        public static final String REDEMPTION_CONFIRMATION = " ";
+        public static final String REDEMPTION_REVERSAL = " ";
       }
 
       public class ReplacePaths {
         public static final String REPLACE_BASE_PATH = "/replaces";
+        public static final String REPLACE_REQUEST = " ";
+        public static final String REPLACE_CONFIRMATION = " ";
+        public static final String REPLACE_REVERSAL = " ";
       }
 
       public class TransferPaths {
         public static final String TRANSFER_BASE_PATH = "/transfers";
+        public static final String TRANSFER_REQUEST = " ";
+        public static final String TRANSFER_CONFIRMATION = " ";
+        public static final String TRANSFER_REVERSAL = " ";
       }
 
       public class VoidPaths {
         public static final String VOID_BASE_PATH = "/voids";
+        public static final String VOID_REQUEST = " ";
+        public static final String VOID_CONFIRMATION = " ";
+        public static final String VOID_REVERSAL = " ";
       }
    }
 
