@@ -34,20 +34,18 @@ import static io.electrum.giftcard.api.GiftcardApi.Paths.VoidPaths.VOID_BASE_PAT
 @Path(VOID_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-@Api(description = "the voids API")
+@Api(description = "the voids API",  authorizations = {
+        @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
 public abstract class VoidsResource {
    protected abstract IVoidsResource getResourceImplementation();
 
    @POST
    @Path("/{voidId}/confirmations/{confirmationId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a void of a gift card.", notes = "The Void Confirmations endpoint "
          + "registers the confirmation of a prior void on a gift card. Void confirmations are "
          + "advice type messages and should continue to be sent at suitable intervals until a response "
          + "has been received. Multiple confirmation advices may be sent which refer to the same "
-         + "void. The net result is that the void is confirmed once.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Voids", }, nickname = Operations.CONFIRM_VOID)
+         + "void. The net result is that the void is confirmed once.", tags = { "Confirmations", "Voids", }, nickname = Operations.CONFIRM_VOID)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
@@ -78,14 +76,11 @@ public abstract class VoidsResource {
 
    @POST
    @Path("/{voidId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a gift card be voided.", notes = "The Voids endpoint "
          + "allows an activated giftcard to be voided. A void is not considered "
          + "complete until a void confirmation or void reversal has been sent and "
          + "acknowledged. While a gift card can only be voided once, a void request "
-         + "should only be sent once and then either confirmed or reversed.", response = VoidResponse.class, authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Voids", },nickname = Operations.VOID)
+         + "should only be sent once and then either confirmed or reversed.", response = VoidResponse.class, tags = { "Voids", },nickname = Operations.VOID)
    @ApiResponses(value = {
          @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = VoidResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -115,8 +110,6 @@ public abstract class VoidsResource {
 
    @POST
    @Path("/{voidId}/reversals/{reversalId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a void reversal undoes a void if the void "
          + "was successfully processed.", notes = "The Void Reversals endpoint "
                + "allows voids of a gift card to be reversed. If the sender of a "
@@ -124,8 +117,7 @@ public abstract class VoidsResource {
                + "sender must send a void reversal. Reversals should continue to be "
                + "sent at suitable intervals until a response has been received. "
                + "Multiple reversals may be sent which refer to the same void. The "
-               + "net result is that the void is reversed once.", authorizations = {
-                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Voids", "Reversals", }, nickname = Operations.REVERSE_VOID)
+               + "net result is that the void is reversed once.", tags = { "Voids", "Reversals", }, nickname = Operations.REVERSE_VOID)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),

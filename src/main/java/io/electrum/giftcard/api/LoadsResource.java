@@ -29,25 +29,22 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-import static io.electrum.giftcard.api.GiftcardApi.Paths.LoadPaths.LOAD_BASE_PATH;
 
-@Path(LOAD_BASE_PATH)
+@Path(GiftcardApi.Paths.LoadPaths.LOAD_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-@Api(description = "the loads API")
+@Api(description = "the loads API", authorizations = {
+        @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
 public abstract class LoadsResource {
    protected abstract ILoadsResource getResourceImplementation();
 
    @POST
-   @Path("/{loadId}/confirmations/{confirmationId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.LoadPaths.LOAD_CONFIRMATION)
    @ApiOperation(value = "Confirm a load of funds on a gift card.", notes = "The Load Confirmations endpoint "
          + "registers the confirmation of a prior load on a gift card. Load confirmations are advice type "
          + "messages and should continue to be sent at suitable intervals until a response has been received. "
          + "Multiple confirmation advices may be sent which refer to the same load. The net result is that "
-         + "the load is confirmed once.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
+         + "the load is confirmed once.", tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
@@ -77,14 +74,11 @@ public abstract class LoadsResource {
    }
 
    @POST
-   @Path("/{loadId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.LoadPaths.LOAD_REQUEST)
    @ApiOperation(value = "Request funds to be loaded on a gift card.", notes = "The Loads endpoint "
          + "allows loading of funds on a gift card to be authorized. A load is not considered "
          + "complete until a load confirmation or load reversal has been sent and acknowledged. A "
-         + "load request should only be sent once otherwise multiple loads may occur erroneously.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Loads", }, nickname = Operations.LOAD)
+         + "load request should only be sent once otherwise multiple loads may occur erroneously.", tags = { "Loads", }, nickname = Operations.LOAD)
    @ApiResponses(value = {
          @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = LoadResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -113,9 +107,7 @@ public abstract class LoadsResource {
    }
 
    @POST
-   @Path("/{loadId}/reversals/{reversalId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.LoadPaths.LOAD_REVERSAL)
    @ApiOperation(value = "Simplistically, a load reversal undoes a load if the load "
          + "was successfully processed.", notes = "The Load Reversals endpoint allows "
                + "loads on a gift card to be reversed. If the sender of a load request "
@@ -124,8 +116,7 @@ public abstract class LoadsResource {
                + "suitable intervals until a response has been received. Multiple "
                + "reversals may be sent which refer to the same load. The net result "
                + "is that the load is reversed once. Note that a load reversal does not "
-               + "equate to a redemption.", authorizations = {
-                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
+               + "equate to a redemption.", tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),

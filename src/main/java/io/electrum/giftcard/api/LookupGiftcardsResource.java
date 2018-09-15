@@ -26,9 +26,8 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-import static io.electrum.giftcard.api.GiftcardApi.Paths.LookupPaths.LOOKUP_BASE_PATH;
 
-@Path(LOOKUP_BASE_PATH)
+@Path(GiftcardApi.Paths.LookupPaths.LOOKUP_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the giftcard API")
@@ -37,13 +36,11 @@ public abstract class LookupGiftcardsResource {
    protected abstract ILookupGiftcardsResource getResourceImplementation();
 
    @POST
-   @Path("/{lookupId}")
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.LookupPaths.LOOKUP_REQUEST)
    @ApiOperation(value = "Request gift card information.", notes = "The Lookup Gift Cards endpoint "
          + "allows information about a gift card to be retrieved. This operation has no financial impact and may "
          + "be submitted repeatedly without financial consequece. Thus there is no confirmation or reversal "
-         + "process for gift card lookup requests.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Giftcard Information", }, nickname = Operations.LOOKUP_GIFTCARD)
+         + "process for gift card lookup requests.", tags = { "Giftcard Information", }, nickname = Operations.LOOKUP_GIFTCARD)
    @ApiResponses(value = {
          @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = LookupResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the gift card lookup resource", response = String.class) }),

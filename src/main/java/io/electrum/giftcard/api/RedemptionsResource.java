@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.ResponseHeader;
 
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -30,9 +29,8 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-import static io.electrum.giftcard.api.GiftcardApi.Paths.RedemptionPaths.REDEMPTION_BASE_PATH;
 
-@Path(REDEMPTION_BASE_PATH)
+@Path(GiftcardApi.Paths.RedemptionPaths.REDEMPTION_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the redemptions API")
@@ -40,15 +38,12 @@ public abstract class RedemptionsResource {
    protected abstract IRedemptionsResource getResourceImplementation();
 
    @POST
-   @Path("/{redemptionId}/confirmations/{confirmationId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.RedemptionPaths.REDEMPTION_CONFIRMATION)
    @ApiOperation(value = "Confirm a redemption against a gift card.", notes = "The Redemption Confirmations endpoint "
          + "registers the confirmation of a prior redemption of a gift card. Redemption confirmations are advice type "
          + "messages and should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same redemption. The net result is that the "
-         + "redemption is confirmed once.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Redemptions", }, nickname = Operations.CONFIRM_REDEMPTION)
+         + "redemption is confirmed once.", tags = { "Confirmations", "Redemptions", }, nickname = Operations.CONFIRM_REDEMPTION)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
@@ -78,15 +73,12 @@ public abstract class RedemptionsResource {
    }
 
    @POST
-   @Path("/{redemptionId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.RedemptionPaths.REDEMPTION_REQUEST)
    @ApiOperation(value = "Request a redemption of a gift card.", notes = "The Redemptions endpoint "
          + "allows gift cards to be redeemed as a form of tender. A redemption is not considered "
          + "complete until a redemption confirmation or redemption reversal has been sent and "
          + "acknowledged. A redemption request should only be sent once otherwise multiple "
-         + "redemptions may occur erroneously.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Redemptions", }, nickname = Operations.REDEMPTION)
+         + "redemptions may occur erroneously.", tags = { "Redemptions", }, nickname = Operations.REDEMPTION)
    @ApiResponses(value = {
          @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = RedemptionResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -115,9 +107,7 @@ public abstract class RedemptionsResource {
    }
 
    @POST
-   @Path("/{redemptionId}/reversals/{reversalId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
+   @Path(GiftcardApi.Paths.RedemptionPaths.REDEMPTION_REVERSAL)
    @ApiOperation(value = "Simplistically, a redemption reversal undoes a redemption if the redemption "
          + "was successfully processed.", notes = "The Redemption Reversals endpoint allows "
                + "redemptions on a gift card to be reversed. If the sender of a redemption request "
@@ -125,8 +115,7 @@ public abstract class RedemptionsResource {
                + "redemption reversal. Reversals should continue to be sent at suitable intervals "
                + "until a response has been received. Multiple reversals may be sent which refer to "
                + "the same redemption. The net result is that the redemption is reversed once. Note "
-               + "that a reversal does not equate to a load.", authorizations = {
-                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Redemptions", "Reversals", }, nickname = Operations.REVERSE_REDEMPTION)
+               + "that a reversal does not equate to a load.", tags = { "Redemptions", "Reversals", }, nickname = Operations.REVERSE_REDEMPTION)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),

@@ -15,21 +15,19 @@ import static io.electrum.giftcard.api.GiftcardApi.Paths.TransferPaths.TRANSFER_
 @Path(TRANSFER_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-@Api(description = "the transfers API")
+@Api(description = "the transfers API", authorizations = {
+        @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
 public abstract class TransfersResource {
 
    protected abstract ITransfersResource getResourceImplementation();
 
    @POST
    @Path("/{transferId}/confirmations/{confirmationId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Confirm a transfer from a source gift card to a target gift card.", notes = "The Transfer Confirmations endpoint registers the confirmation of a prior transfer of a "
          + "source gift card to a target gift card. Transfer confirmations are advice type messages and "
          + "should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same transfer. The net result is that the "
-         + "transfer is confirmed once.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Confirmations", "Transfers", }, nickname = Operations.CONFIRM_TRANSFER)
+         + "transfer is confirmed once.", tags = { "Confirmations", "Transfers", }, nickname = Operations.CONFIRM_TRANSFER)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
@@ -60,14 +58,11 @@ public abstract class TransfersResource {
 
    @POST
    @Path("/{transferId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Request a transfer from a source gift card to a target gift card.", notes = "The Transfers endpoint "
          + "allows funds to be transferred from one gift card to another. A transfer is not considered "
          + "complete until a transfer confirmation or transfer reversal has been sent and "
          + "acknowledged. A transfer request should only be sent once otherwise multiple "
-         + "transfers may occur erroneously.", authorizations = {
-               @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Transfers", }, nickname = Operations.TRANSFER)
+         + "transfers may occur erroneously.", tags = { "Transfers", }, nickname = Operations.TRANSFER)
    @ApiResponses(value = {
          @ApiResponse(code = GiftcardApi.ResponseCodes.CREATED, message = GiftcardApi.ResponseMessages.CREATED, response = TransferResponse.class, responseHeaders = {
                @ResponseHeader(name = "Location", description = "The location of the created load resource", response = String.class) }),
@@ -97,16 +92,13 @@ public abstract class TransfersResource {
 
    @POST
    @Path("/{transferId}/reversals/{reversalId}")
-   @Consumes({MediaType.APPLICATION_JSON})
-   @Produces({MediaType.APPLICATION_JSON})
    @ApiOperation(value = "Simplistically, a transfer reversal undoes a transfer if the transfer "
          + "was successfully processed.", notes = "The Transfer Reversals endpoint allows "
                + "a transfer between gift cards to be reversed. If the sender of a transfer request "
                + "is uncertain of the state of a transfer request then the sender must send a "
                + "transfer reversal. Reversals should continue to be sent at suitable intervals "
                + "until a response has been received. Multiple reversals may be sent which refer to "
-               + "the same transfer. The net result is that the transfer is reversed once.", authorizations = {
-                     @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) }, tags = { "Transfers", "Reversals", }, nickname = Operations.REVERSE_TRANSFER)
+               + "the same transfer. The net result is that the transfer is reversed once.", tags = { "Transfers", "Reversals", }, nickname = Operations.REVERSE_TRANSFER)
    @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
