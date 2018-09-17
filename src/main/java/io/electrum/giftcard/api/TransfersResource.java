@@ -22,7 +22,7 @@ public abstract class TransfersResource {
    protected abstract ITransfersResource getResourceImplementation();
 
    @POST
-   @Path("/{transferId}/confirmations/{confirmationId}")
+   @Path(GiftcardApi.Paths.TransferPaths.TRANSFER_CONFIRMATION)
    @ApiOperation(value = "Confirm a transfer from a source gift card to a target gift card.", notes = "The Transfer Confirmations endpoint registers the confirmation of a prior transfer of a "
          + "source gift card to a target gift card. Transfer confirmations are advice type messages and "
          + "should continue to be sent at suitable intervals until a response has been received. Multiple "
@@ -57,7 +57,7 @@ public abstract class TransfersResource {
    }
 
    @POST
-   @Path("/{transferId}")
+   @Path(GiftcardApi.Paths.TransferPaths.TRANSFER_REQUEST)
    @ApiOperation(value = "Request a transfer from a source gift card to a target gift card.", notes = "The Transfers endpoint "
          + "allows funds to be transferred from one gift card to another. A transfer is not considered "
          + "complete until a transfer confirmation or transfer reversal has been sent and "
@@ -91,7 +91,7 @@ public abstract class TransfersResource {
    }
 
    @POST
-   @Path("/{transferId}/reversals/{reversalId}")
+   @Path(GiftcardApi.Paths.TransferPaths.TRANSFER_REVERSAL)
    @ApiOperation(value = "Simplistically, a transfer reversal undoes a transfer if the transfer "
          + "was successfully processed.", notes = "The Transfer Reversals endpoint allows "
                + "a transfer between gift cards to be reversed. If the sender of a transfer request "

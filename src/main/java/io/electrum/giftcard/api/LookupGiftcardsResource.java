@@ -30,7 +30,8 @@ import javax.ws.rs.core.UriInfo;
 @Path(GiftcardApi.Paths.LookupPaths.LOOKUP_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-@Api(description = "the giftcard API")
+@Api(description = "the giftcard API",  authorizations = {
+        @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
 public abstract class LookupGiftcardsResource {
 
    protected abstract ILookupGiftcardsResource getResourceImplementation();

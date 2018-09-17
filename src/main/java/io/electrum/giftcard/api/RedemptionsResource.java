@@ -33,7 +33,8 @@ import javax.ws.rs.core.UriInfo;
 @Path(GiftcardApi.Paths.RedemptionPaths.REDEMPTION_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-@Api(description = "the redemptions API")
+@Api(description = "the redemptions API", authorizations = {
+        @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
 public abstract class RedemptionsResource {
    protected abstract IRedemptionsResource getResourceImplementation();
 
