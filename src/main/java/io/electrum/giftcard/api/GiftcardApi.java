@@ -18,7 +18,7 @@ public class GiftcardApi {
    }
 
    public class Paths {
-      public static final String VERSION_NO = "/3";
+      public static final String VERSION_NO = "/v3";
       public static final String BASE_PATH = "/giftcard" + VERSION_NO;
       public static final String REVERSALS = "/reversals";
       public static final String CONFIRMATIONS = "/confirmations";
