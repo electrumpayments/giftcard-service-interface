@@ -22,7 +22,7 @@ import io.electrum.giftcard.api.model.ReplaceConfirmation;
 import io.electrum.giftcard.api.model.ReplaceRequest;
 import io.electrum.giftcard.api.model.ReplaceResponse;
 import io.electrum.giftcard.api.model.ReplaceReversal;
-import io.electrum.vas.model.BasicAdviceResponse;
+import io.electrum.vas.model.BasicAdvice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -48,7 +48,7 @@ public abstract class ReplacesResource {
          + "replace request is confirmed once.", tags = { "Confirmations",
                      "Replaces", }, nickname = Operations.CONFIRM_REPLACE)
    @ApiResponses(value = {
-         @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
@@ -122,7 +122,7 @@ public abstract class ReplacesResource {
                + "the same replace request. The net result is that the replace request is reversed once.", tags = { "Replaces",
                            "Reversals", }, nickname = Operations.REVERSE_REPLACE)
    @ApiResponses(value = {
-         @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+         @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),

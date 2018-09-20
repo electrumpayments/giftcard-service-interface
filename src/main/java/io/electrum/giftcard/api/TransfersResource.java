@@ -1,7 +1,7 @@
 package io.electrum.giftcard.api;
 
 import io.electrum.giftcard.api.model.*;
-import io.electrum.vas.model.BasicAdviceResponse;
+import io.electrum.vas.model.BasicAdvice;
 import io.swagger.annotations.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +28,7 @@ public abstract class TransfersResource {
          + "should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same transfer. The net result is that the "
          + "transfer is confirmed once.", tags = { "Confirmations", "Transfers", }, nickname = Operations.CONFIRM_TRANSFER)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
@@ -99,7 +99,7 @@ public abstract class TransfersResource {
                + "transfer reversal. Reversals should continue to be sent at suitable intervals "
                + "until a response has been received. Multiple reversals may be sent which refer to "
                + "the same transfer. The net result is that the transfer is reversed once.", tags = { "Transfers", "Reversals", }, nickname = Operations.REVERSE_TRANSFER)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),

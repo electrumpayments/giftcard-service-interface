@@ -5,7 +5,7 @@ import io.electrum.giftcard.api.model.LoadConfirmation;
 import io.electrum.giftcard.api.model.LoadRequest;
 import io.electrum.giftcard.api.model.LoadResponse;
 import io.electrum.giftcard.api.model.LoadReversal;
-import io.electrum.vas.model.BasicAdviceResponse;
+import io.electrum.vas.model.BasicAdvice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -45,7 +45,7 @@ public abstract class LoadsResource {
          + "messages and should continue to be sent at suitable intervals until a response has been received. "
          + "Multiple confirmation advices may be sent which refer to the same load. The net result is that "
          + "the load is confirmed once.", tags = { "Confirmations", "Loads", }, nickname = Operations.CONFIRM_LOAD)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
@@ -117,7 +117,7 @@ public abstract class LoadsResource {
                + "reversals may be sent which refer to the same load. The net result "
                + "is that the load is reversed once. Note that a load reversal does not "
                + "equate to a redemption.", tags = { "Loads", "Reversals", }, nickname = Operations.REVERSE_LOAD)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),

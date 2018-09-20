@@ -5,7 +5,7 @@ import io.electrum.giftcard.api.model.RedemptionConfirmation;
 import io.electrum.giftcard.api.model.RedemptionRequest;
 import io.electrum.giftcard.api.model.RedemptionResponse;
 import io.electrum.giftcard.api.model.RedemptionReversal;
-import io.electrum.vas.model.BasicAdviceResponse;
+import io.electrum.vas.model.BasicAdvice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -45,7 +45,7 @@ public abstract class RedemptionsResource {
          + "messages and should continue to be sent at suitable intervals until a response has been received. Multiple "
          + "confirmation advices may be sent which refer to the same redemption. The net result is that the "
          + "redemption is confirmed once.", tags = { "Confirmations", "Redemptions", }, nickname = Operations.CONFIRM_REDEMPTION)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
@@ -117,7 +117,7 @@ public abstract class RedemptionsResource {
                + "until a response has been received. Multiple reversals may be sent which refer to "
                + "the same redemption. The net result is that the redemption is reversed once. Note "
                + "that a reversal does not equate to a load.", tags = { "Redemptions", "Reversals", }, nickname = Operations.REVERSE_REDEMPTION)
-   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdviceResponse.class),
+   @ApiResponses(value = { @ApiResponse(code = GiftcardApi.ResponseCodes.ACCEPTED, message = GiftcardApi.ResponseMessages.ACCEPTED, response = BasicAdvice.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.BAD_REQUEST, message = GiftcardApi.ResponseMessages.BAD_REQUEST, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.NOT_FOUND, message = GiftcardApi.ResponseMessages.NOT_FOUND, response = ErrorDetail.class),
          @ApiResponse(code = GiftcardApi.ResponseCodes.INTERNAL_SERVER_ERROR, message = GiftcardApi.ResponseMessages.INTERNAL_SERVER_ERROR, response = ErrorDetail.class),
