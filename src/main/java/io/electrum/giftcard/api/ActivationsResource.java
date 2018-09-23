@@ -30,7 +30,6 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 
-@Path(GiftcardApi.Paths.ActivationPaths.ACTIVATION_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the activations API", authorizations = {

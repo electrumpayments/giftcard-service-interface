@@ -1,6 +1,5 @@
 package io.electrum.giftcard.api;
 
-import static io.electrum.giftcard.api.GiftcardApi.Paths.ReplacePaths.REPLACE_BASE_PATH;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -31,7 +30,6 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.ResponseHeader;
 
-@Path(REPLACE_BASE_PATH)
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
 @Api(description = "the replaces API", authorizations = {

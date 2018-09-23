@@ -10,9 +10,7 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.*;
 
-import static io.electrum.giftcard.api.GiftcardApi.Paths.TransferPaths.TRANSFER_BASE_PATH;
 
-@Path(TRANSFER_BASE_PATH)
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the transfers API", authorizations = {
