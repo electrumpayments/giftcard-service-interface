@@ -1,15 +1,13 @@
 package io.electrum.giftcard.api.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import io.electrum.vas.Utils;
+
 import java.util.Objects;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.electrum.vas.Utils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -74,7 +72,7 @@ public class MarketingAttribute {
     *
     * @return member
     **/
-   @ApiModelProperty(required = true, value = "If the customer associated with this card is a member of this marketing attribute.")
+   @ApiModelProperty(value = "If the customer associated with this card is a member of this marketing attribute.")
    @JsonProperty("member")
    @NotNull
    public Boolean getMember() {
@@ -95,7 +93,7 @@ public class MarketingAttribute {
     *
     * @return marketToCustomer
     **/
-   @ApiModelProperty(required = true, value = "Should the customer associated with card be subjected to marketing for this specific marketing attribute.")
+   @ApiModelProperty(value = "Should the customer associated with card be subjected to marketing for this specific marketing attribute.")
    @JsonProperty("marketToCustomer")
    @NotNull
    public Boolean getMarketToCustomer() {

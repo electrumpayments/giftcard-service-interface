@@ -1,6 +1,6 @@
 This page describes changes to the Giftcard Service Interface implemented across different releases of the interface.
 
-## v3.6.1
+## v3.7.0
 
 Released 14 September 2018
 

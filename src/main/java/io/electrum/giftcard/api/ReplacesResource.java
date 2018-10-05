@@ -1,6 +1,13 @@
 package io.electrum.giftcard.api;
 
 
+import io.electrum.giftcard.api.model.ErrorDetail;
+import io.electrum.giftcard.api.model.ReplaceConfirmation;
+import io.electrum.giftcard.api.model.ReplaceRequest;
+import io.electrum.giftcard.api.model.ReplaceResponse;
+import io.electrum.giftcard.api.model.ReplaceReversal;
+import io.electrum.vas.model.BasicAdvice;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -16,12 +23,6 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-import io.electrum.giftcard.api.model.ErrorDetail;
-import io.electrum.giftcard.api.model.ReplaceConfirmation;
-import io.electrum.giftcard.api.model.ReplaceRequest;
-import io.electrum.giftcard.api.model.ReplaceResponse;
-import io.electrum.giftcard.api.model.ReplaceReversal;
-import io.electrum.vas.model.BasicAdvice;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,6 +31,7 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.ResponseHeader;
 
+@Path("")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
 @Api(description = "the replaces API", authorizations = {

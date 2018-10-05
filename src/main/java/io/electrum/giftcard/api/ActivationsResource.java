@@ -6,13 +6,6 @@ import io.electrum.giftcard.api.model.ActivationResponse;
 import io.electrum.giftcard.api.model.ActivationReversal;
 import io.electrum.giftcard.api.model.ErrorDetail;
 import io.electrum.vas.model.BasicAdvice;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Authorization;
-import io.swagger.annotations.ResponseHeader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -29,11 +22,20 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
+import io.swagger.annotations.ResponseHeader;
+
 
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 @Api(description = "the activations API", authorizations = {
         @Authorization(value = GiftcardApi.HttpAuthorizations.HTTP_BASIC) })
+@Path("/")
 public abstract class ActivationsResource {
 
    protected abstract IActivationsResource getResourceImplementation();
@@ -73,6 +75,7 @@ public abstract class ActivationsResource {
             httpServletRequest);
    }
 
+   
    @POST
    @Path(GiftcardApi.Paths.ActivationPaths.ACTIVATION_REQUEST)
    @ApiOperation(value = "Request a gift card activation.", notes = "The Activations endpoint allows a "

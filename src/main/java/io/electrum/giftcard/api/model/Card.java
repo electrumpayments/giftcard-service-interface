@@ -1,5 +1,11 @@
 package io.electrum.giftcard.api.model;
 
+import io.electrum.sdk.masking2.DoNotPersist;
+import io.electrum.sdk.masking2.MaskAll;
+import io.electrum.sdk.masking2.MaskPan;
+import io.electrum.sdk.masking2.Masked;
+import io.electrum.vas.Utils;
+
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -7,11 +13,6 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.electrum.sdk.masking2.DoNotPersist;
-import io.electrum.sdk.masking2.MaskAll;
-import io.electrum.sdk.masking2.MaskPan;
-import io.electrum.sdk.masking2.Masked;
-import io.electrum.vas.Utils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -21,15 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "Information about a gift card; its number, rank, expiry date and optionally the PIN either unencrypted or encrypted.")
 public class Card {
 
-   @Masked(MaskPan.class)
-   @DoNotPersist(replacementValue = "0000000000000000")
    private String pan = null;
    private String expiryDate = null;
-   @Masked()
-   @DoNotPersist(replacementValue = "0000000000000000")
    private String clearPin = null;
-   @Masked()
-   @DoNotPersist(replacementValue = "0000000000000000")
    private String encryptedPin = null;
    private String rank;
 
@@ -91,7 +86,7 @@ public class Card {
    @ApiModelProperty(value = "The pin number associated with the card unencrypted.")
    @JsonProperty("clearPin")
    @Masked
-   @DoNotPersist(replacementValue = "0000000000000000")
+   @DoNotPersist(replacementValue = "00000")
    public String getClearPin() {
       return clearPin;
    }
