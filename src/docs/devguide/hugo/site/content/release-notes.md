@@ -2,12 +2,13 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 ## v3.8.0
 
-Released TBC
+Released 23 October 2018
 
 - Updated base API dependency to v3.16.0:
     - Added an `msisdn` field to the `Customer` model to carry the customer's cellphone number.
-    - Added a `PosInfo` model to capture POS information.
-      - This also contains a `PosEntryMode` model which defines how PAN and PIN information was captured.
+    - Added a `PosInfo` model to capture POS information this also contains the following sub-fields:
+      - a `PosEntryMode` model which defines how PAN and PIN information was captured,
+      - a `PosConditionCode` enumeration which indicates the POS circumstances of the transaction.
     - Added a new `PaymentMethod` called `Card` for card based payments.
 - Added a `cardHolder` field of type `Customer` to the following request and response messages:
   - `LoadRequest`
