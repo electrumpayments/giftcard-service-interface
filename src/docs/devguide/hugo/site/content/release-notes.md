@@ -2,7 +2,7 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 ## v3.10.0
 
-Released TBC
+Released 12 November 2018
 
 - Added `cardHolder` field to `LookupRequest` which contains a `Customer` object. As part of this change, the `card` 
 field is no longer mandatory, but one of either `card` or `cardHolder` should be set. 
