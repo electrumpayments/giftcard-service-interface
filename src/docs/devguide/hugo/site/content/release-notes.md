@@ -2,7 +2,7 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 ## v3.11.0
 
-Released TBC February 2019
+Released 25 February 2019
 - Added a `DO_NOT_HONOUR` `ErrorType` for uses when a transaction is intentionally declined without further information (e.g. due to an unspecified security violation).
 
 ## v3.10.0
