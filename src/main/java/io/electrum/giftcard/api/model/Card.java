@@ -2,6 +2,7 @@ package io.electrum.giftcard.api.model;
 
 import java.util.Objects;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -24,7 +25,9 @@ public class Card {
 
    private String pan = null;
    private String expiryDate = null;
+   @Deprecated
    private String clearPin = null;
+   @Deprecated
    private String encryptedPin = null;
    private String rank;
    private Pin pin = null;
@@ -34,10 +37,10 @@ public class Card {
       return this;
    }
 
-   @ApiModelProperty(required = true, value = "Pin that can either be of type clear pin or encryted.")
+   @ApiModelProperty(value = "Pin that can either be of type clear PIN or encryted PIN. This value takes precendence over"
+         + "encryptedPin and clearPin fields.")
    @JsonProperty("pin")
-   @Masked(MaskAll.class)
-   @DoNotPersist()
+   @Valid
    public Pin getPin() {
       return pin;
    }
@@ -91,6 +94,7 @@ public class Card {
       this.expiryDate = expiryDate;
    }
 
+   @Deprecated
    public Card clearPin(String clearPin) {
       this.clearPin = clearPin;
       return this;
@@ -105,14 +109,17 @@ public class Card {
    @JsonProperty("clearPin")
    @Masked
    @DoNotPersist(replacementValue = "00000")
+   @Deprecated
    public String getClearPin() {
       return clearPin;
    }
 
+   @Deprecated
    public void setClearPin(String clearPin) {
       this.clearPin = clearPin;
    }
 
+   @Deprecated
    public Card encryptedPin(String encryptedPin) {
       this.encryptedPin = encryptedPin;
       return this;
@@ -128,10 +135,12 @@ public class Card {
    @Pattern(regexp = "[0-9ABCDEF]+")
    @Masked
    @DoNotPersist(replacementValue = "0000000000000000")
+   @Deprecated
    public String getEncryptedPin() {
       return encryptedPin;
    }
 
+   @Deprecated
    public void setEncryptedPin(String encryptedPin) {
       this.encryptedPin = encryptedPin;
    }
