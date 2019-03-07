@@ -1,11 +1,5 @@
 package io.electrum.giftcard.api.model;
 
-import io.electrum.sdk.masking2.DoNotPersist;
-import io.electrum.sdk.masking2.MaskAll;
-import io.electrum.sdk.masking2.MaskPan;
-import io.electrum.sdk.masking2.Masked;
-import io.electrum.vas.Utils;
-
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +7,12 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.electrum.sdk.masking2.DoNotPersist;
+import io.electrum.sdk.masking2.MaskAll;
+import io.electrum.sdk.masking2.MaskPan;
+import io.electrum.sdk.masking2.Masked;
+import io.electrum.vas.Utils;
+import io.electrum.vas.model.Pin;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -27,6 +27,25 @@ public class Card {
    private String clearPin = null;
    private String encryptedPin = null;
    private String rank;
+
+   private Pin pin = null;
+
+   public Card pin(Pin pin) {
+      this.pin = pin;
+      return this;
+   }
+
+   @ApiModelProperty(required = true, value = "Pin that can either be of type clear pin or encryted.")
+   @JsonProperty("pin")
+   @Masked(MaskAll.class)
+   @DoNotPersist()
+   public Pin getPin() {
+      return pin;
+   }
+
+   public void setPin(Pin pin) {
+      this.pin = pin;
+   }
 
    public Card pan(String pan) {
       this.pan = pan;
@@ -167,6 +186,7 @@ public class Card {
       sb.append("    clearPin: ").append(Utils.toIndentedString(new MaskAll().mask(clearPin))).append("\n");
       sb.append("    encryptedPin: ").append(Utils.toIndentedString(new MaskAll().mask(encryptedPin))).append("\n");
       sb.append("    rank: ").append(Utils.toIndentedString(rank)).append("\n");
+      sb.append("    pin: ").append(Utils.toIndentedString(pin)).append("\n");
       sb.append("}");
       return sb.toString();
    }
