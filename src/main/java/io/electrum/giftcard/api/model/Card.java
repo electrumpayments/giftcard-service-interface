@@ -27,7 +27,6 @@ public class Card {
    private String clearPin = null;
    private String encryptedPin = null;
    private String rank;
-
    private Pin pin = null;
 
    public Card pin(Pin pin) {

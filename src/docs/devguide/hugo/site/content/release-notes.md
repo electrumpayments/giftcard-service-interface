@@ -2,6 +2,12 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 ## v3.11.0
 
+Released 07 March 2019
+- Added a `PIN_ATTEMPTS_EXCEEDED` `ErrorType` for uses when a transaction is declined due to previous incorrect pin response exceeding a limit.
+- Added a `Pin` to `Card` for better handling of clear and encrypted pins. 
+
+## v3.11.0
+
 Released 25 February 2019
 - Added a `DO_NOT_HONOUR` `ErrorType` for uses when a transaction is intentionally declined without further information (e.g. due to an unspecified security violation).
 
