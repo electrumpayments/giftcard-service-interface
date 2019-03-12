@@ -25,8 +25,20 @@ public class Card {
 
    private String pan = null;
    private String expiryDate = null;
+   /**
+    * clearPin
+    * 
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#pin Pin} with
+    *             type CLEAR_PIN instead
+    */
    @Deprecated
    private String clearPin = null;
+   /**
+    * encryptedPin
+    * 
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#pin Pin} with
+    *             type CLEAR_PIN instead
+    */
    @Deprecated
    private String encryptedPin = null;
    private String rank;
@@ -106,7 +118,7 @@ public class Card {
     * 
     * @return clearPin
     * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
-    *             with type CLEAR_PIN takes
+    *             with type CLEAR_PIN.
     **/
    @ApiModelProperty(value = "The pin number associated with the card unencrypted.")
    @JsonProperty("clearPin")
@@ -117,12 +129,25 @@ public class Card {
       return clearPin;
    }
 
+   /**
+    * Sets the clearPin field
+    *
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
+    *             {@link Card#setPin(Pin pin) Pin} with type CLEAR_PIN.
+    **/
    @Deprecated
    public void setClearPin(String clearPin) {
       this.clearPin = clearPin;
    }
 
-   @Deprecated
+   /**
+    * Sets the encryptedPin field and returns the CardPayment object.
+    *
+    * @param encryptedPin
+    * @return The Card with encryptedPin set
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
+    *             {@link Card#setPin(Pin pin) Pin} with type CLEAR_PIN.
+    */
    @Deprecated
    public Card encryptedPin(String encryptedPin) {
       this.encryptedPin = encryptedPin;
@@ -130,7 +155,7 @@ public class Card {
    }
 
    /**
-    * The encrypted pin number associated with the card in HEX format. takes precedence
+    * The encrypted pin number associated with the card in HEX format.
     * 
     * @return encryptedPin
     * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
@@ -146,6 +171,12 @@ public class Card {
       return encryptedPin;
    }
 
+   /**
+    * Sets the encryptedPin
+    *
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
+    *             {@link Card#setPin(Pin pin) Pin} with type ENCRYPTED_PIN instead
+    **/
    @Deprecated
    public void setEncryptedPin(String encryptedPin) {
       this.encryptedPin = encryptedPin;
