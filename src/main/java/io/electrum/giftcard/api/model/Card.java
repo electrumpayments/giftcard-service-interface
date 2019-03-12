@@ -28,16 +28,16 @@ public class Card {
    /**
     * clearPin
     * 
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#pin Pin} with
-    *             type CLEAR_PIN instead
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#pin Pin} with type
+    *             CLEAR_PIN instead
     */
    @Deprecated
    private String clearPin = null;
    /**
     * encryptedPin
     * 
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#pin Pin} with
-    *             type CLEAR_PIN instead
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#pin Pin} with type
+    *             CLEAR_PIN instead
     */
    @Deprecated
    private String encryptedPin = null;
@@ -117,8 +117,8 @@ public class Card {
     * precedence
     * 
     * @return clearPin
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
-    *             with type CLEAR_PIN.
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#getPin() Pin} with
+    *             type CLEAR_PIN.
     **/
    @ApiModelProperty(value = "The pin number associated with the card unencrypted.")
    @JsonProperty("clearPin")
@@ -132,8 +132,8 @@ public class Card {
    /**
     * Sets the clearPin field
     *
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
-    *             {@link Card#setPin(Pin pin) Pin} with type CLEAR_PIN.
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#setPin(Pin pin)
+    *             Pin} with type CLEAR_PIN.
     **/
    @Deprecated
    public void setClearPin(String clearPin) {
@@ -145,8 +145,8 @@ public class Card {
     *
     * @param encryptedPin
     * @return The Card with encryptedPin set
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
-    *             {@link Card#setPin(Pin pin) Pin} with type CLEAR_PIN.
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#setPin(Pin pin)
+    *             Pin} with type CLEAR_PIN.
     */
    @Deprecated
    public Card encryptedPin(String encryptedPin) {
@@ -158,8 +158,8 @@ public class Card {
     * The encrypted pin number associated with the card in HEX format.
     * 
     * @return encryptedPin
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
-    *             with type ENCRYPTED_PIN instead
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#getPin() Pin} with
+    *             type ENCRYPTED_PIN instead
     **/
    @ApiModelProperty(value = "The encrypted pin number associated with the card in HEX format.")
    @JsonProperty("encryptedPin")
@@ -174,8 +174,8 @@ public class Card {
    /**
     * Sets the encryptedPin
     *
-    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use
-    *             {@link Card#setPin(Pin pin) Pin} with type ENCRYPTED_PIN instead
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#setPin(Pin pin)
+    *             Pin} with type ENCRYPTED_PIN instead
     **/
    @Deprecated
    public void setEncryptedPin(String encryptedPin) {
