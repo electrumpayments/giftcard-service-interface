@@ -105,7 +105,7 @@ public class Card {
     * precedence
     * 
     * @return clearPin
-    * @deprecated As of version 3.19.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
     *             with type CLEAR_PIN takes
     **/
    @ApiModelProperty(value = "The pin number associated with the card unencrypted.")
@@ -123,6 +123,7 @@ public class Card {
    }
 
    @Deprecated
+   @Deprecated
    public Card encryptedPin(String encryptedPin) {
       this.encryptedPin = encryptedPin;
       return this;
@@ -132,7 +133,7 @@ public class Card {
     * The encrypted pin number associated with the card in HEX format. takes precedence
     * 
     * @return encryptedPin
-    * @deprecated As of version 3.19.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
+    * @deprecated As of version 3.12.0, due to the addition of the {@link Pin Pin} model, use {@link Card#getPin() Pin}
     *             with type ENCRYPTED_PIN instead
     **/
    @ApiModelProperty(value = "The encrypted pin number associated with the card in HEX format.")
