@@ -155,7 +155,7 @@ public class Card {
    }
 
    /**
-    * The encrypted pin number associated with the card in HEX format.
+    * The encrypted PIN associated with the card in HEX format.
     * 
     * @return encryptedPin
     * @deprecated As of version 3.12.0, due to the addition of the {@link Pin} model, use {@link Card#getPin() Pin} with
