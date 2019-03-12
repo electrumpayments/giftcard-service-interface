@@ -101,7 +101,8 @@ public class Card {
    }
 
    /**
-    * The pin number associated with the card unencrypted.
+    * The pin number associated with the card unencrypted. {@link Card#getPin() Pin} with type CLEAR_PIN takes
+    * precedence
     * 
     * @return clearPin
     **/
@@ -126,7 +127,8 @@ public class Card {
    }
 
    /**
-    * The encrypted pin number associated with the card in HEX format.
+    * The encrypted pin number associated with the card in HEX format. {@link Card#getPin() Pin} with type ENCRYPTED_PIN
+    * takes precedence
     * 
     * @return encryptedPin
     **/
