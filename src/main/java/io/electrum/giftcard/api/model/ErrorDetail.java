@@ -46,7 +46,7 @@ public class ErrorDetail {
       TEMPORARY_FAILURE("TEMPORARY_FAILURE"),
       DO_NOT_HONOUR("DO_NOT_HONOUR"),
       PIN_ATTEMPTS_EXCEEDED("PIN_ATTEMPTS_EXCEEDED");
-      
+
       private String value;
 
       ErrorType(String value) {
