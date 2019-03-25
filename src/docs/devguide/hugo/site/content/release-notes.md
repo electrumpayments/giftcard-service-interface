@@ -4,7 +4,7 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 Released 25 March 2019
 
-- Updated the Giftcard Service Interface 
+- Updated the Giftcard Service Interface:
 	- Added `CARD_BLOCKED` `ErrorType` for use when the card has been blocked.
 	- Added `CARD_DELETED` `ErrorType` for use when the card has been deleted.
 	- added `FUNCTION_NOT_SUPPORTED_FOR_CARD_RANK` `ErrorType` for use when a function is not supported for a specific card rank.
@@ -13,7 +13,7 @@ Released 25 March 2019
 
 Released 12 March 2019
 
-- Updated base API dependency to v3.19.0
+- Updated base API dependency to v3.19.0:
     - Added explicit fields for STAN and RRN values to `BasicAdvice` and `Transaction` models.
     - Added `ExchangeRate` to describe the exchange rate between two currencies
     - Added `Account` to describe more varied accounts in a consistent manner. This has the following sub-types defined:
