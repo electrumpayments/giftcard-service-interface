@@ -2,6 +2,15 @@ This page describes changes to the Giftcard Service Interface implemented across
 
 ## v3.14.0
 
+Released 23 July 2019
+
+- Updated base API dependency to v3.21.0:
+	- Added new field `emailAddress` to `Customer` model.
+
+
+
+## v3.14.0
+
 Released 22 May 2019
 
 - Updated the Giftcard Service Interface:
